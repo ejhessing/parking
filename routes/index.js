@@ -4,7 +4,8 @@ var knex = require('knex')(development)
 
 module.exports = {
   get: get,
-  profile: profile
+  profile: profile,
+  searchCar : searchCar 
 }
 
 function get (req, res) {
@@ -28,5 +29,9 @@ function profile (req, res) {
   .catch(function (err) {
     res.status(500).send('DATABASE ERROR: ' + err.message)
   })
+
+}
+
+function searchCar (req, res) {
 
 }

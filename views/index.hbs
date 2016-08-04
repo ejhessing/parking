@@ -4,15 +4,19 @@
     <title>Who owns this car?</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 
   </head>
   <body>
+    <header>
+      <h1>Who's in my spot?!</h1>
+    </header>
     <div class="container">
-      <h1>Testing</h1>
-      {{#each users}}
-        <li>{{name}} ({{phone}})</li>
-      {{/each}}
+
+      <form id="searchCar" action="/searchCar" method="get">
+      <input type="text" name="search" >
+
+      <button value="submit">Find my owner</button>
     </div>
   </body>
 </html>

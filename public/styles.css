@@ -1,0 +1,34 @@
+header {
+  height: 15%;
+  background: black;
+  color: white;
+  padding: 15px;
+}
+
+body {
+  background: steelblue;
+}
+
+.container{
+  height:600px;
+  background: steelblue;
+}
+
+#searchCar {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchCar input {
+  display: block;
+  width: 300px;
+  margin: 10px;
+}
+
+#searchCar button {
+  margin: 10px;
+  background: navy;
+  color:white;
+}

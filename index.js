@@ -8,6 +8,7 @@ var index = require('./routes/index')
 var PORT = process.env.PORT || 3000
 
 var app = express()
+app.use(express.static('public'));
 app.engine('hbs', hbs())
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'views'))
@@ -16,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/', index.get)
 
 app.get('/profile', index.profile)
+
+app.get("/search", index.searchCar )
 
 app.listen(PORT, function () {
   console.log('Listening on port', PORT)
