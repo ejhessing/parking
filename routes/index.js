@@ -1,10 +1,9 @@
 var express = require('express')
-var development = require('../knexfile').development
-var knex = require('knex')(development)
+var db = require('../db/db')
 
 module.exports = {
   get: get,
-  profile: profile
+  searchCar: searchCar
 }
 
 function get (req, res) {
@@ -19,11 +18,11 @@ function get (req, res) {
 
 }
 
-function profile (req, res) {
-  knex('users')
-  .select()
-  .then(function (users) {
-    res.render('profile', { users: users })
+function searchCar (req, res) {
+  var rego = req.query.rego
+  db.getUserInfo(rego)
+  .then( function (data) {
+    res.render('profile', data[0])
   })
   .catch(function (err) {
     res.status(500).send('DATABASE ERROR: ' + err.message)
