@@ -3,20 +3,11 @@ var db = require('../db/db')
 
 module.exports = {
   get: get,
-  profile: profile,
   searchCar : searchCar
-
+}
 
 function get (req, res) {
-  knex('users')
-  .select()
-  .then(function (users) {
-    res.render('index', { users: users })
-  })
-  .catch(function (err) {
-    res.status(500).send('DATABASE ERROR: ' + err.message)
-  })
-
+  res.render('index')
 }
 
 function searchCar (req, res) {
@@ -28,9 +19,5 @@ function searchCar (req, res) {
   .catch(function (err) {
     res.status(500).send('DATABASE ERROR: ' + err.message)
   })
-
-}
-
-function searchCar (req, res) {
 
 }
