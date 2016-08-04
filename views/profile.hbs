@@ -9,24 +9,34 @@
   </head>
   <body>
     <div class="container">
-      <h1>Testing</h1>
+      <header>
+        <h1>Parking</h1>
+        <button type="button" name="button">Register</button>
+        <form class="" action="index.html" method="post">
+          <input type="text" name="login" placeholder="login">
+          <input type="text" name="password" placeholder="password">
+          <button type="submit" name="button">Login</button>
+        </form>
+      </header>
 
-      <form class="" action="/insert" method="get">
-      <label for="name">Name</label>
-      <input type="text" name="name" >
-
-      <label for="phone">Phone Number</label>
-      <input type="text" name="phone">
-
-      <label for="numberPlate">Number Plate</label>
-      <input type="text" name="numberPlate">
-
-      <label for="location">Location</label>
-      <input type="text" name="location">
-
-      <button value="submit" >Sumbit</button>
-
-
+      <h1>Profile</h1>
+      <section class="row profile-card">
+        <div class="six columns profile">
+          <p>Name: {{name}}</p>
+          <p>Phone: {{phone}}</p>
+          <p>Location: {{location}}</p>
+          <p>Car registration number: {{rego}}</p>
+        </div>
+        <div class="six columns">
+          <p>
+            Placeholder for QR code
+          </p>
+        </div>
+      </section>
+      <section class="row actions">
+        <button type="button" name="update">Update</button>
+        <button type="button" name="print">Print</button>
+      </section>
     </div>
   </body>
 </html>
