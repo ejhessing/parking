@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Express boilerplate with Knex.js",
   "main": "index.js",
+  "engines": {
+    "node": "6.3"
+  },
   "scripts": {
     "knex": "knex",
     "start": "node index.js",
