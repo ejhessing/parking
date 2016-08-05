@@ -7,7 +7,8 @@
     "knex": "knex",
     "start": "node index.js",
     "server": "node-inspector --web-port=8888 & nodemon --debug index.js",
-    "test": "tape 'tests/**/*.test.js' | tap-spec"
+    "test": "tape 'tests/**/*.test.js' | tap-spec",
+    "postinstall": "npm run knex migrate:latest"
   },
   "repository": {
     "type": "git",
