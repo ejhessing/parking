@@ -24,6 +24,10 @@ app.post('/registerUser', index.registerUser)
 
 app.get('/sms/:id', index.sms)
 
+app.get('/update/:rego', index.update)
+
+app.post('/updateUser', index.updateUser)
+
 app.listen(PORT, function () {
   console.log('Listening on port', PORT)
 })

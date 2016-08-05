@@ -14,7 +14,9 @@ module.exports = {
   searchCar : searchCar,
   register: register,
   registerUser: registerUser,
-  sms: sms
+  sms: sms,
+  update: update,
+  updateUser: updateUser
 }
 
 function get (req, res) {
@@ -74,4 +76,34 @@ function sms (req, res) {
     .catch(function (err){
       res.status(500).send('err.message')
     })
+}
+
+function update (req, res) {
+  var rego = req.params.rego
+  db.getUserInfo(rego)
+  .then(function (data) {
+    res.render('update', data[0])
+  })
+  .catch(function (err){
+    res.status(500).send('err.message')
+  })
+}
+
+function updateUser (req, res) {
+  var id = req.body.id
+  var name = req.body.name
+  var phone = req.body.phone
+  var location = req.body.location
+  var rego = req.body.rego
+
+  db.updateUser(id, name, phone, location, rego)
+  .then(function (data) {
+    return db.getUserInfo(data[0].rego)
+  })
+  .then(function (data) {
+    res.render('profile', data[0])
+  })
+  .catch(function (err) {
+    res.status(500).send('DATABASE ERROR: ' + err.message)
+  })
 }

@@ -4,7 +4,8 @@ var knex = require('knex')(production)
 module.exports = {
   getUserInfo: getUserInfo,
   createUser: createUser,
-  getPhone: getPhone
+  getPhone: getPhone,
+  updateUser: updateUser
 }
 
 function getUserInfo (rego) {
@@ -43,4 +44,23 @@ function getPhone (id) {
   return knex('profiles')
     .select('phone')
     .where('user_id', id)
+}
+
+function updateUser (id, name, phone, location, rego) {
+  return knex('profiles')
+    .update({name: name, phone: phone, location: location})
+    .where('user_id', id)
+    .then(function (data) {
+      return knex('cars')
+      .insert({rego: rego})
+      .where('user_id', id)
+    })
+    .then(function(){
+      return knex('cars')
+        .select('rego')
+        .where('user_id', id)
+    })
+    .catch(function (err) {
+      console.log(err)
+    })
 }
