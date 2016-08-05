@@ -1,12 +1,19 @@
 var express = require('express')
 var db = require('../db/db')
 var qr = require('qr-image')
+var credentials = require('../credentials')
+
+var accountSid = credentials.accountSid || process.env.accountSid
+var authToken = credentials.authToken || process.env.authToken
+
+var client = require('twilio')(accountSid, authToken);
 
 module.exports = {
   get: get,
   searchCar : searchCar,
   register: register,
-  registerUser: registerUser
+  registerUser: registerUser,
+  sms: sms
 }
 
 function get (req, res) {
@@ -45,4 +52,25 @@ function registerUser (req, res) {
   .catch(function (err) {
     res.status(500).send('DATABASE ERROR: ' + err.message)
   })
+}
+
+function sms (req, res) {
+  var id = req.params.id
+  db.getPhone(id)
+    .then(function (data) {
+      client.messages.create({
+          to: data[0].phone,
+          from: "+12672972013",
+          body: "Hi! can you please move your car?"
+      }, function(err, message) {
+        if (err) {
+          console.log(err)
+          return
+        }
+          res.render('success')
+      })
+    })
+    .catch(function (err){
+      res.status(500).send('err.message')
+    })
 }

@@ -22,6 +22,8 @@ app.get('/register', index.register)
 
 app.post('/registerUser', index.registerUser)
 
+app.get('/sms/:id', index.sms)
+
 app.listen(PORT, function () {
   console.log('Listening on port', PORT)
 })
