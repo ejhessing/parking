@@ -3,7 +3,8 @@ var knex = require('knex')(production)
 
 module.exports = {
   getUserInfo: getUserInfo,
-  createUser: createUser
+  createUser: createUser,
+  getPhone: getPhone
 }
 
 function getUserInfo (rego) {
@@ -36,4 +37,10 @@ function createUser (name, phone, location, rego) {
     .catch(function (err) {
       console.log(err)
     })
+}
+
+function getPhone (id) {
+  return knex('profiles')
+    .select('phone')
+    .where('user_id', id)
 }

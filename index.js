@@ -5,7 +5,7 @@ var path = require('path')
 
 var index = require('./routes/index')
 
-var PORT = process.env.PORT || 3000
+var PORT = process.env.PORT || 3030
 
 var app = express()
 app.use(express.static('public'));
@@ -21,6 +21,8 @@ app.get('/searchCar', index.searchCar)
 app.get('/register', index.register)
 
 app.post('/registerUser', index.registerUser)
+
+app.get('/sms/:id', index.sms)
 
 app.listen(PORT, function () {
   console.log('Listening on port', PORT)
