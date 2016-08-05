@@ -32,3 +32,9 @@ body {
   background: navy;
   color:white;
 }
+
+.qrcode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
