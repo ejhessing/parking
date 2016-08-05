@@ -1,40 +1,75 @@
-header {
-  height: 15%;
-  background: black;
-  color: white;
-  padding: 15px;
-}
 
-body {
-  background: steelblue;
-}
+    body {
+      background: white;
+    }
 
-.container{
-  height:600px;
-  background: steelblue;
-}
+    header {
+      height: 11%;
+      padding: 15px;
+      color: white;
+      background-color: steelblue;
+      border: 1px solid steelblue;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
 
-#searchCar {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .dataInput {
+      margin-top: 11px;
+      display: flex;
+    }
 
-#searchCar input {
-  display: block;
-  width: 300px;
-  margin: 10px;
-}
+    .dataInput button {
+      color: white;
+      border: 1px solid white;
+    }
 
-#searchCar button {
-  margin: 10px;
-  background: navy;
-  color:white;
-}
+    .dataInput button:hover {
+      color: black;
+      border: 1px solid black;
+    }
 
-.qrcode {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    .profile-card {
+      width: 100%;
+      background-color: white;
+      padding: 15px;
+      margin: 20px 0px;
+      border: 2px solid black;
+      border-radius: 20px;
+    }
+
+    .profile-card p {
+      font-size: 2em;
+    }
+
+    .container{
+      height:600px;
+      background: white;
+    }
+
+    #searchCar {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #searchCar input {
+      display: block;
+      width: 300px;
+      margin: 10px;
+    }
+
+    #searchCar button {
+      margin: 10px;
+      background: navy;
+      color:white;
+    }
+
+    .qrcode {
+      text-align: center;
+    }
+
+    #qrImage {
+      margin-left: 39px;
+    }

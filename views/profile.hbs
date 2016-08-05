@@ -4,22 +4,22 @@
     <title>Who owns this car?</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
-    <link rel="stylesheet" href="../styles/style.css">
-
+    <link rel="stylesheet" href="/styles.css" type="text/css">
   </head>
   <body>
     <div class="container">
       <header>
-        <h1>Parking</h1>
-        <button type="button" name="button">Register</button>
-        <form class="" action="index.html" method="post">
-          <input type="text" name="login" placeholder="login">
-          <input type="text" name="password" placeholder="password">
-          <button type="submit" name="button">Login</button>
-        </form>
+        <h1>PARKING</h1>
+        <div class="dataInput">
+          <form action="index.html" method="post">
+            <input type="text" name="login" placeholder="login">
+            <input type="text" name="password" placeholder="password">
+            <button type="submit" name="button">Login</button>
+            <br>
+          </form>
+          <button type="button" name="button">Register</button>
+        </div>
       </header>
-
-      <h1>Profile</h1>
       <section class="row profile-card">
         <div class="six columns profile">
           <p>Name: {{name}}</p>
@@ -28,8 +28,8 @@
           <p>Car registration number: {{rego}}</p>
         </div>
         <div class="six columns qrcode">
-            <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 27 27"><path d="{{qr.path}}"/></svg>
-            <p>QR Code</p>
+          <p>Please Scan</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 27 27" id="qrImage"><path d="{{qr.path}}"/></svg>
         </div>
       </section>
       <section class="row actions">
