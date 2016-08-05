@@ -1,5 +1,5 @@
-var development = require('../knexfile').development
-var knex = require('knex')(development)
+var production = require('../knexfile').production
+var knex = require('knex')(production)
 
 module.exports = {
   getUserInfo: getUserInfo,
