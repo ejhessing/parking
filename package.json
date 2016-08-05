@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "knex": "knex",
-    "start": "node-inspector --web-port=8888 & nodemon --debug index.js",
+    "start": "node index.js",
+    "server": "node-inspector --web-port=8888 & nodemon --debug index.js",
     "test": "tape 'tests/**/*.test.js' | tap-spec"
   },
   "repository": {
