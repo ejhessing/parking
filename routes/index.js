@@ -17,7 +17,7 @@ function searchCar (req, res) {
   var rego = req.query.rego
   db.getUserInfo(rego)
   .then( function (data) {
-    data[0].qr = qr.svgObject("sms/" + data[0].user_id)
+    data[0].qr = qr.svgObject("https://eda-parking.herokuapp.com/sms/" + data[0].user_id)
     res.render('profile', data[0])
   })
   .catch(function (err) {
