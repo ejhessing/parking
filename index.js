@@ -18,6 +18,10 @@ app.get('/', index.get)
 
 app.get('/searchCar', index.searchCar)
 
+app.get('/register', index.register)
+
+app.post('/registerUser', index.registerUser)
+
 app.listen(PORT, function () {
   console.log('Listening on port', PORT)
 })
