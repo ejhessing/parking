@@ -63,7 +63,7 @@ app.post('/registerUser', passport.authenticate('signup', {
   failureRedirect: '/register'
 }))
 
-// app.get('/sms/:id', index.sms)
+app.get('/sms/:id', index.sms)
 
 app.get('/update', index.update)
 

@@ -3,11 +3,11 @@ var db = require('../db/db')
 var qr = require('qr-image')
 var db = require('../db/db')
 
-// var accountSid = process.env.ACCOUNT_SID
-// var authToken = process.env.AUTHTOKEN
-// var phoneNumber = process.env.PHONE_NUMBER
+var accountSid = process.env.ACCOUNT_SID
+var authToken = process.env.AUTHTOKEN
+var phoneNumber = process.env.PHONE_NUMBER
 
-// var client = require('twilio')(accountSid, authToken)
+var client = require('twilio')(accountSid, authToken)
 
 module.exports = {
   get: get,
@@ -51,26 +51,26 @@ function register (req, res) {
   res.render('register')
 }
 
-// function sms (req, res) {
-//   var id = req.params.id
-//   db.getPhone(id)
-//     .then(function (data) {
-//       client.messages.create({
-//           to: data[0].phone,
-//           from: phoneNumber,
-//           body: "Hi! can you please move your car?"
-//       }, function(err, message) {
-//         if (err) {
-//           console.log(err)
-//           return
-//         }
-//           res.render('success')
-//       })
-//     })
-//     .catch(function (err){
-//       res.status(500).send('err.message')
-//     })
-// }
+function sms (req, res) {
+  var id = req.params.id
+  db.getPhone(id)
+    .then(function (data) {
+      client.messages.create({
+          to: data[0].phone,
+          from: phoneNumber,
+          body: "Hi! can you please move your car?"
+      }, function(err, message) {
+        if (err) {
+          console.log(err)
+          return
+        }
+          res.render('success')
+      })
+    })
+    .catch(function (err){
+      res.status(500).send('err.message')
+    })
+}
 
 function update (req, res) {
   var id = req.session.passport.user
