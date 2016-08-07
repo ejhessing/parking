@@ -52,6 +52,11 @@ app.post('/login', passport.authenticate('login', {
   failureRedirect: '/'
 }))
 
+app.get('/logout', function(req, res) {
+  req.logout()
+  res.redirect('/')
+})
+
 app.get('/profile', index.profile)
 
 app.get('/searchCar', index.searchCar)
