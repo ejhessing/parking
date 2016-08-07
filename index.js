@@ -34,6 +34,10 @@ passport.deserializeUser(function(id, done) {
 })
 
 passport.use('login', new LocalStrategy(configureAuth.loginStrategy))
+passport.use('signup', new LocalStrategy({
+    passReqToCallback : true
+  }, configureAuth.registerStrategy))
+
 
 app.use(express.static('public'))
 app.engine('hbs', hbs())
@@ -54,7 +58,10 @@ app.get('/searchCar', index.searchCar)
 
 app.get('/register', index.register)
 
-app.post('/registerUser', index.registerUser)
+app.post('/registerUser', passport.authenticate('signup', {
+  successRedirect: '/profile',
+  failureRedirect: '/register'
+}))
 
 // app.get('/sms/:id', index.sms)
 

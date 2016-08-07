@@ -14,8 +14,7 @@ module.exports = {
   profile: profile,
   searchCar : searchCar,
   register: register,
-  registerUser: registerUser,
-  // sms: sms,
+    // sms: sms,
   update: update,
   updateUser: updateUser
 }
@@ -26,6 +25,7 @@ function get (req, res) {
 
 function profile (req, res) {
   var id = req.session.passport.user
+  console.log(id)
   db.getUserInfoById(id)
     .then(function (users) {
       res.render('personalProfile', users[0])
@@ -49,24 +49,6 @@ function searchCar (req, res) {
 
 function register (req, res) {
   res.render('register')
-}
-
-function registerUser (req, res) {
-  var name = req.body.name
-  var phone = req.body.phone
-  var location = req.body.location
-  var rego = req.body.rego
-
-  db.createUser(name, phone, location, rego)
-  .then(function (data) {
-    return db.getUserInfo(data[0].rego)
-  })
-  .then(function (data) {
-    res.render('personalProfile', data[0])
-  })
-  .catch(function (err) {
-    res.status(500).send('registerUser ' + 'DATABASE ERROR: ' + err.message)
-  })
 }
 
 // function sms (req, res) {
@@ -109,7 +91,6 @@ function updateUser (req, res) {
   var rego = req.body.rego
   db.updateUser(id, name, phone, location, rego)
   .then(function (data) {
-    console.log(data)
     return db.getUserInfoById(data[0].user_id)
   })
   .then(function (data) {

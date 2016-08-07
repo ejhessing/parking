@@ -25,9 +25,9 @@ function getUserInfoById (id) {
     .select('users.id', 'profiles.name', 'profiles.location', 'profiles.phone', 'cars.rego')
 }
 
-function createUser (name, phone, location, rego) {
+function createUser (username, password, name, phone, location, rego) {
   return knex('users')
-    .insert({})
+    .insert({login: username, password: password})
     .then(function (id) {
       return knex('profiles')
         .insert({name: name, phone: phone, location: location, user_id: id[0]})
@@ -41,10 +41,10 @@ function createUser (name, phone, location, rego) {
       return knex('cars')
       .insert({rego: rego, user_id: data[0].user_id})
     })
-    .then(function(id){
-      return knex('cars')
-        .select('rego')
-        .where('id', id[0])
+    .then(function(){
+      return knex('users')
+        .select('id')
+        .where('login', username)
     })
     .catch(function (err) {
       console.log(err)
