@@ -20,21 +20,18 @@
         </form>
       </header>
 
-      <h1>Update</h1>
-      <section class="update">
-        <form class="" action="/updateUser" method="post">
-          <input style="display: none" type="text" name="id" value={{id}}>
-          <label for="name">Name: </label>
-          <input type="text" name="name" value={{name}}>
-          <label for="phone">Phone: </label>
-          <input type="text" name="phone" value={{phone}}>
-          <label for="location">Location: </label>
-          <input type="text" name="location" value={{location}}>
-          <label for="rego">Car Registration Number: </label>
-          <input type="text" name="rego" value={{rego}}>
-          <br>
-          <button type="submit" name="submit">Update</button>
-        </form>
+      <h1>Profile</h1>
+      <section class="row profile-card">
+        <div class="six columns profile">
+          <p>Name: {{name}}</p>
+          <p>Phone: {{phone}}</p>
+          <p>Location: {{location}}</p>
+          <p>Car registration number: {{rego}}</p>
+        </div>
+        <div class="six columns qrcode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 45 45"><path d="{{qr.path}}"/></svg>
+        </div>
+      </section>
     </div>
   </body>
 </html>

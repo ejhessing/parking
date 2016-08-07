@@ -2,16 +2,27 @@ var production = require('../knexfile').production
 var knex = require('knex')(production)
 
 module.exports = {
-  getUserInfo: getUserInfo,
+  getUserInfoByRego: getUserInfoByRego,
+  getUserInfoById: getUserInfoById,
   createUser: createUser,
   getPhone: getPhone,
-  updateUser: updateUser
+  updateUser: updateUser,
+  findById: findById,
+  findByLogin: findByLogin
 }
 
-function getUserInfo (rego) {
+function getUserInfoByRego (rego) {
   return knex('cars')
           .join('profiles', 'cars.user_id','=', 'profiles.user_id')
           .where('rego', rego)
+}
+
+function getUserInfoById (id) {
+  return knex('users')
+    .join('profiles', 'users.id', '=', 'profiles.user_id')
+    .join('cars', 'users.id', '=', 'cars.user_id')
+    .where('users.id', id)
+    .select('users.id', 'profiles.name', 'profiles.location', 'profiles.phone', 'cars.rego')
 }
 
 function createUser (name, phone, location, rego) {
@@ -57,10 +68,22 @@ function updateUser (id, name, phone, location, rego) {
     })
     .then(function(){
       return knex('cars')
-        .select('rego')
+        .select('user_id')
         .where('user_id', id)
     })
     .catch(function (err) {
       console.log(err)
     })
+}
+
+function findById (id) {
+  return knex('users')
+    .select('*')
+    .where('id', id)
+}
+
+function findByLogin (login) {
+  return knex('users')
+    .select('*')
+    .where('login', login)
 }
