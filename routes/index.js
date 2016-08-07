@@ -14,7 +14,7 @@ module.exports = {
   profile: profile,
   searchCar : searchCar,
   register: register,
-    // sms: sms,
+  sms: sms,
   update: update,
   updateUser: updateUser
 }
