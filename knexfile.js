@@ -27,12 +27,23 @@ module.exports = {
   },
 
   production: {
-    client: 'sqlite3',
+    client: 'postgresql',
     connection: {
-      filename: './dev.sqlite3'
+      database: 'parking',
+      user:     'selkie',
+      password: 'academy'
     },
-    useNullAsDefault: true
-  },
+    pool: {
+      min: 2,
+      max: 10
+    }
+  }
+  //   client: 'sqlite3',
+  //   connection: {
+  //     filename: './dev.sqlite3'
+  //   },
+  //   useNullAsDefault: true
+  // },
 
 
 };

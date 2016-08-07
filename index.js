@@ -14,6 +14,22 @@ app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
+//POSTGRES
+// var pg = require('pg')
+// var client = new pg.Client();
+//
+// var config = {
+//   user: 'selkie',
+//   database: 'parking',
+//   password: 'academy',
+//   port: 5432,
+//   max: 10,
+//   idleTimeoutMillis: 30000,
+// }
+//
+// var pool = new pg.Pool(config)
+
+
 app.get('/', index.get)
 
 app.get('/searchCar', index.searchCar)
