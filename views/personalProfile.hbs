@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Who owns this car?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Parking</h1>
+        <form action="/logout" method="get">
+          <button type="submit" name="update">Logout</button>
+        </form>
+      </header>
+
+      <h1>Profile</h1>
+      <section class="row profile-card">
+        <div class="six columns profile">
+          <p>Name: {{name}}</p>
+          <p>Phone: {{phone}}</p>
+          <p>Location: {{location}}</p>
+          <p>Car registration number: {{rego}}</p>
+        </div>
+        <div class="six columns qrcode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 45 45"><path d="{{qr.path}}"/></svg>
+        </div>
+      </section>
+      <section class="row actions">
+        <form action="/update" method="get">
+          <button type="submit" name="update">Update</button>
+        </form>
+        <button type="button" name="print">Print</button>
+      </section>
+    </div>
+  </body>
+</html>
