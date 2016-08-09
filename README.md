@@ -1,23 +1,5 @@
-# Boilerplate: Knex.js
-
-Phase 1 boilerplate project with:
-
- - Express
- - Knex
- - SQLite3
- - Express Handlebars
- - body-parser
- - tape
- - tap-spec
- - Node Inspector
- - Nodemon
+Parking App for EDA Academy in Auckland
 
 
-## Install
 
-```
-npm install
-npm run knex migrate:latest
-npm run knex seed:run
-npm start
-```
+Created by : Amandine Perichon, Tim Coomer, Prem Sagar Thogaru and Erwin Hessing
