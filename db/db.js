@@ -14,8 +14,8 @@ module.exports = {
 
 function getUserInfoByRego (rego) {
   return knex('cars')
-          .join('profiles', 'cars.user_id','=', 'profiles.user_id')
-          .where('rego', rego)
+    .join('profiles', 'cars.user_id','=', 'profiles.user_id')
+    .where('rego', rego)
 }
 
 function getUserInfoById (id) {
