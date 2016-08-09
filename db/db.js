@@ -1,5 +1,6 @@
-var production = require('../knexfile').production
-var knex = require('knex')(production)
+require('dotenv').config();
+var config = require('../knexfile')[process.env.NODE_ENV || 'development']
+var knex = require('knex')(config)
 
 module.exports = {
   getUserInfoByRego: getUserInfoByRego,
@@ -13,8 +14,8 @@ module.exports = {
 
 function getUserInfoByRego (rego) {
   return knex('cars')
-          .join('profiles', 'cars.user_id','=', 'profiles.user_id')
-          .where('rego', rego)
+    .join('profiles', 'cars.user_id','=', 'profiles.user_id')
+    .where('rego', rego)
 }
 
 function getUserInfoById (id) {
@@ -28,18 +29,16 @@ function getUserInfoById (id) {
 function createUser (username, password, name, phone, location, rego) {
   return knex('users')
     .insert({login: username, password: password})
+    .returning('id')
     .then(function (id) {
+      console.log('id', id)
       return knex('profiles')
         .insert({name: name, phone: phone, location: location, user_id: id[0]})
-    })
-    .then(function (id){
-      return knex('profiles')
-        .select('user_id')
-        .where('id', id[0])
+        .returning('user_id')
     })
     .then(function (data) {
       return knex('cars')
-      .insert({rego: rego, user_id: data[0].user_id})
+      .insert({rego: rego, user_id: data[0]})
     })
     .then(function(){
       return knex('users')
