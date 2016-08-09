@@ -1,13 +1,7 @@
 var express = require('express')
 var db = require('../db/db')
 var qr = require('qr-image')
-var db = require('../db/db')
 
-// var accountSid = process.env.ACCOUNT_SID
-// var authToken = process.env.AUTHTOKEN
-// var phoneNumber = process.env.PHONE_NUMBER
-//
-// var client = require('twilio')(accountSid, authToken)
 
 module.exports = {
   get: get,
