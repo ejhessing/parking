@@ -30,7 +30,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       host: 'localhost',
-      port: '32770',
+      port: '32771',
       database: 'parking',
       user:     'postgres',
       password: ''

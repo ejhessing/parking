@@ -75,6 +75,8 @@ app.get('/update', index.update)
 
 app.post('/updateUser', index.updateUser)
 
+app.get('/sms/:id', index.sms)
+
 app.listen(PORT, function () {
   console.log('Listening on port', PORT)
 })

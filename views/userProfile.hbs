@@ -4,6 +4,7 @@
     <title>Who owns this car?</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link rel="stylesheet" href="/styles.css" type="text/css">
 
   </head>
   <body>
@@ -19,8 +20,6 @@
           <button type="submit" name="button">Login</button>
         </form>
       </header>
-
-      <h1>Profile</h1>
       <section class="row profile-card">
         <div class="six columns profile">
           <p>Name: {{name}}</p>
@@ -29,10 +28,7 @@
           <p>Car registration number: {{rego}}</p>
         </div>
         <div class="six columns qrcode">
-
             <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" viewBox="0 0 35 35"><path d="{{qr.path}}"/></svg>
-            <p>QR Code</p>
-
         </div>
       </section>
     </div>
