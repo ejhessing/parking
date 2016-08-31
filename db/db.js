@@ -62,7 +62,7 @@ function updateUser (id, name, phone, location, rego) {
     .where('user_id', id)
     .then(function (data) {
       return knex('cars')
-      .insert({rego: rego})
+      .update({rego: rego})
       .where('user_id', id)
     })
     .then(function(){
