@@ -20,7 +20,7 @@ module.exports = {
 }
 
 function get (req, res) {
-  res.render('index')
+  res.render('index', {error: ''})
 }
 
 function profile (req, res) {
@@ -31,7 +31,7 @@ function profile (req, res) {
       res.render('personalProfile', users[0])
     })
     .catch(function (err) {
-      res.status(500).send('profile ' + 'DATABASE ERROR: ' + err.message)
+      res.render('index', {error: 'Sorry, something went wrong'})
     })
 }
 
@@ -43,7 +43,7 @@ function searchCar (req, res) {
     res.render('userProfile', data[0])
   })
   .catch(function (err) {
-    res.status(500).send('searchCar ' + 'DATABASE ERROR: ' + err.message)
+    res.render('index', {error: 'No car with this rego number'})
   })
 }
 
@@ -68,7 +68,7 @@ function sms (req, res) {
       })
     })
     .catch(function (err){
-      res.status(500).send('err.message')
+      res.render('index', {error: 'Sorry, something went wrong'})
     })
 }
 
@@ -80,7 +80,7 @@ function update (req, res) {
     res.render('update', users[0])
   })
   .catch(function (err){
-    res.status(500).send('update ' + 'DATABASE ERROR: ' + err.message)
+    res.render('index', {error: 'Sorry, something went wrong'})
   })
 }
 
@@ -99,7 +99,7 @@ function updateUser (req, res) {
       res.render('personalProfile', users[0])
     })
     .catch(function (err) {
-      res.status(500).send('updateUser ' + 'DATABASE ERROR: ' + err.message)
+      res.render('index', {error: 'Sorry, something went wrong'})
     })
 }
 
@@ -120,6 +120,6 @@ function sms (req, res) {
       })
     })
     .catch(function (err){
-      res.status(500).send('err.message')
+      res.render('index', {error: 'Sorry, something went wrong'})
     })
 }
