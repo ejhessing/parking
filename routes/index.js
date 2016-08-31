@@ -75,8 +75,9 @@ function sms (req, res) {
 function update (req, res) {
   var id = req.session.passport.user
   db.getUserInfoById(id)
-  .then(function (data) {
-    res.render('update', data[0])
+  .then(function (users) {
+    users[0].qr = qr.svgObject("https://eda-parking.herokuapp.com/sms/" + users[0].id)
+    res.render('update', users[0])
   })
   .catch(function (err){
     res.status(500).send('update ' + 'DATABASE ERROR: ' + err.message)
