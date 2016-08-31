@@ -10,7 +10,8 @@
     "knex": "knex",
     "start": "node index.js",
     "server": "node-inspector --web-port=8888 & nodemon --debug index.js",
-    "test": "tape 'tests/**/*.test.js' | tap-spec"
+    "test": "tape 'tests/**/*.test.js' | tap-spec",
+    "heroku-postbuild": "npm knex migrate:latest"
   },
   "repository": {
     "type": "git",
