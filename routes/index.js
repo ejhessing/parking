@@ -76,6 +76,7 @@ function update (req, res) {
   var id = req.session.passport.user
   db.getUserInfoById(id)
   .then(function (users) {
+    req.session.location = users.location
     users[0].qr = qr.svgObject("https://parkie.herokuapp.com/sms/" + users[0].id)
     res.render('update', users[0])
   })
@@ -88,7 +89,7 @@ function updateUser (req, res) {
   var id = req.body.id
   var name = req.body.name
   var phone = req.body.phone
-  var location = req.body.location
+  var location = req.body.location || req.session.location
   var rego = req.body.rego
   db.updateUser(id, name, phone, location, rego)
     .then(function (data) {
@@ -113,7 +114,7 @@ function sms (req, res) {
           body: "Hi! can you please move your car?"
       }, function(err, message) {
         if (err) {
-          console.log(err)
+          res.render('index', {error: 'Sorry, something went wrong'})
           return
         }
           res.render('success')
