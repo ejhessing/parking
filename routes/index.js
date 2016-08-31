@@ -6,7 +6,7 @@ var credentials = require('../credentials')
 var accountSid = credentials.accountSid || process.env.accountSid
 var authToken = credentials.authToken || process.env.authToken
 
-var client = require('twilio')(accountSid, authToken);
+//var client = require('twilio')(accountSid, authToken);
 
 
 module.exports = {
@@ -14,14 +14,9 @@ module.exports = {
   profile: profile,
   searchCar : searchCar,
   register: register,
-<<<<<<< HEAD
   sms: sms,
   update: update,
   updateUser: updateUser
-=======
-  registerUser: registerUser,
-  sms: sms
->>>>>>> ce6316eaca304c0e0b931d8b26000ce3b4e85c95
 }
 
 function get (req, res) {
@@ -30,9 +25,9 @@ function get (req, res) {
 
 function profile (req, res) {
   var id = req.session.passport.user
-  console.log(id)
   db.getUserInfoById(id)
     .then(function (users) {
+      users[0].qr = qr.svgObject("https://eda-parking.herokuapp.com/sms/" + users[0].id)
       res.render('personalProfile', users[0])
     })
     .catch(function (err) {
@@ -95,15 +90,15 @@ function updateUser (req, res) {
   var location = req.body.location
   var rego = req.body.rego
   db.updateUser(id, name, phone, location, rego)
-  .then(function (data) {
-    return db.getUserInfoById(data[0].user_id)
-  })
-  .then(function (data) {
-    res.render('personalProfile', data[0])
-  })
-  .catch(function (err) {
-    res.status(500).send('updateUser ' + 'DATABASE ERROR: ' + err.message)
-  })
+    .then(function (data) {
+      return db.getUserInfoById(data[0].user_id)
+    })
+    .then(function (data) {
+      res.render('personalProfile', data[0])
+    })
+    .catch(function (err) {
+      res.status(500).send('updateUser ' + 'DATABASE ERROR: ' + err.message)
+    })
 }
 
 function sms (req, res) {
