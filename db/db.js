@@ -1,5 +1,5 @@
 require('dotenv').config();
-var config = require('../knexfile')[process.env.NODE_ENV || 'development']
+var config = require('../knexfile')[process.env.NODE_ENV]
 var knex = require('knex')(config)
 
 module.exports = {
