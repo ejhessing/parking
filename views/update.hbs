@@ -21,9 +21,9 @@
         <form class="" action="/updateUser" method="post">
           <input style="display: none" type="text" name="id" value={{id}}>
           <label for="name">Name: </label>
-          <input type="text" name="name" value={{name}}>
+          <input type="text" name="name" placeholder={{name}}>
           <label for="phone">Phone: </label>
-          <input type="text" name="phone" value={{phone}}>
+          <input type="text" name="phone" placeholder={{phone}}>
           <label for="location">Location: </label>
           <select name="location">
             <option value="">Current Loc: {{location}}</option>
@@ -39,7 +39,7 @@
             <option value="Te Kau - L0 Wellbeing Room">Te Kau - L0 Wellbeing Room</option>
           </select>
           <label for="rego">Car Registration Number: </label>
-          <input type="text" name="rego" value={{rego}}>
+          <input type="text" name="rego" placeholder={{rego}}>
           <br>
           <button type="submit" name="submit">Update</button>
         </form>
