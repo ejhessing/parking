@@ -88,11 +88,12 @@ function update (req, res) {
 function updateUser (req, res) {
   db.getUserInfoById(req.body.id)
     .then(function(user){
+      console.log(user)
       var id = req.body.id
-      var name = req.body.name || user.name
-      var phone = req.body.phone || user.phone
-      var location = req.body.location || user.location
-      var rego = req.body.rego || user.rego
+      var name = req.body.name || user[0].name
+      var phone = req.body.phone || user[0].phone
+      var location = req.body.location || user[0].location
+      var rego = req.body.rego || user[0].rego
       db.updateUser(id, name, phone, location, rego)
         .then(function (data) {
           return db.getUserInfoById(data[0].user_id)
