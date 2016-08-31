@@ -31,6 +31,10 @@
       font-family: 'Passion One';
     }
 
+    header a:hover {
+      color: #e1493b;
+    }
+
     header form {
       padding-right: 40px;
     }
