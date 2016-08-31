@@ -86,22 +86,26 @@ function update (req, res) {
 }
 
 function updateUser (req, res) {
-  var id = req.body.id
-  var name = req.body.name
-  var phone = req.body.phone
-  var location = req.body.location || req.session.location
-  var rego = req.body.rego
-  db.updateUser(id, name, phone, location, rego)
-    .then(function (data) {
-      return db.getUserInfoById(data[0].user_id)
+  db.getUserInfoById(req.body.id)
+    .then(function(user){
+      var id = req.body.id
+      var name = req.body.name || user.name
+      var phone = req.body.phone || user.phone
+      var location = req.body.location || user.location
+      var rego = req.body.rego || user.location
+      db.updateUser(id, name, phone, location, rego)
+        .then(function (data) {
+          return db.getUserInfoById(data[0].user_id)
+        })
+        .then(function (users) {
+          users[0].qr = qr.svgObject("https://parkie.herokuapp.com/sms/" + users[0].id)
+          res.render('personalProfile', users[0])
+        })
+        .catch(function (err) {
+          res.render('index', {error: 'Sorry, something went wrong'})
+        })
     })
-    .then(function (users) {
-      users[0].qr = qr.svgObject("https://parkie.herokuapp.com/sms/" + users[0].id)
-      res.render('personalProfile', users[0])
-    })
-    .catch(function (err) {
-      res.render('index', {error: 'Sorry, something went wrong'})
-    })
+
 }
 
 function sms (req, res) {
