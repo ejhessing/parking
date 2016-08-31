@@ -27,7 +27,7 @@ function profile (req, res) {
   var id = req.session.passport.user
   db.getUserInfoById(id)
     .then(function (users) {
-      users[0].qr = qr.svgObject("https://eda-parking.herokuapp.com/sms/" + users[0].id)
+      users[0].qr = qr.svgObject("https://parkie.herokuapp.com/sms/" + users[0].id)
       res.render('personalProfile', users[0])
     })
     .catch(function (err) {
@@ -39,7 +39,7 @@ function searchCar (req, res) {
   var rego = req.query.rego
   db.getUserInfoByRego(rego)
   .then( function (data) {
-    data[0].qr = qr.svgObject("https://eda-parking.herokuapp.com/sms/" + data.user_id)
+    data[0].qr = qr.svgObject("https://parkie.herokuapp.com/sms/" + data.user_id)
     res.render('userProfile', data[0])
   })
   .catch(function (err) {
@@ -76,7 +76,7 @@ function update (req, res) {
   var id = req.session.passport.user
   db.getUserInfoById(id)
   .then(function (users) {
-    users[0].qr = qr.svgObject("https://eda-parking.herokuapp.com/sms/" + users[0].id)
+    users[0].qr = qr.svgObject("https://parkie.herokuapp.com/sms/" + users[0].id)
     res.render('update', users[0])
   })
   .catch(function (err){
@@ -95,7 +95,7 @@ function updateUser (req, res) {
       return db.getUserInfoById(data[0].user_id)
     })
     .then(function (users) {
-      users[0].qr = qr.svgObject("https://eda-parking.herokuapp.com/sms/" + users[0].id)
+      users[0].qr = qr.svgObject("https://parkie.herokuapp.com/sms/" + users[0].id)
       res.render('personalProfile', users[0])
     })
     .catch(function (err) {
