@@ -73,3 +73,7 @@
     #qrImage {
       margin-left: 39px;
     }
+
+
+    /* Print page */
+  @page { size: landscape; }
