@@ -94,8 +94,9 @@ function updateUser (req, res) {
     .then(function (data) {
       return db.getUserInfoById(data[0].user_id)
     })
-    .then(function (data) {
-      res.render('personalProfile', data[0])
+    .then(function (users) {
+      users[0].qr = qr.svgObject("https://eda-parking.herokuapp.com/sms/" + users[0].id)
+      res.render('personalProfile', users[0])
     })
     .catch(function (err) {
       res.status(500).send('updateUser ' + 'DATABASE ERROR: ' + err.message)
