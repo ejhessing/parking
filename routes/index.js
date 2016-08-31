@@ -92,7 +92,7 @@ function updateUser (req, res) {
       var name = req.body.name || user.name
       var phone = req.body.phone || user.phone
       var location = req.body.location || user.location
-      var rego = req.body.rego || user.location
+      var rego = req.body.rego || user.rego
       db.updateUser(id, name, phone, location, rego)
         .then(function (data) {
           return db.getUserInfoById(data[0].user_id)
