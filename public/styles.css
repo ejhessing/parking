@@ -5,13 +5,46 @@
 
     header {
       height: 11%;
-      padding: 15px;
+      padding: 20px;
       color: white;
-      background-color: steelblue;
-      border: 1px solid steelblue;
+      background-color: black;
+      border: 1px solid black;
       display: flex;
       width: 100%;
-      justify-content: space-between;
+      justify-content: space-around;
+    }
+
+    header div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    header button {
+      background-color: #cbcbcb;
+    }
+
+    header a {
+      font-size: 10rem;
+      text-decoration: none;
+      color: white;
+      font-family: 'Passion One';
+    }
+
+    header form {
+      padding-right: 40px;
+    }
+
+    header a .eda {
+      font-size: 8rem;
+      color: #e1493b;
+      font-family: 'Passion One';
+    }
+
+    header a .parking {
+      font-size: 8rem;
+      color: #cbcbcb;
+      font-family: 'Lobster';
     }
 
     .dataInput {
@@ -47,23 +80,35 @@
       background: white;
     }
 
-    #searchCar {
+    .car {
+      position: relative;
+    }
+
+    /*#searchCar {
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+    }*/
+
+    .car form {
+      position: absolute;
+      text-align: center;
+      top: 60%;
+      left: 34%;
     }
 
     #searchCar input {
       display: block;
-      width: 300px;
-      margin: 10px;
+      width: 15rem;
+      margin-bottom: 10rem;
     }
 
     #searchCar button {
       margin: 10px;
-      background: navy;
-      color:white;
+      background: #e1493b;
+      color: white;
     }
 
     .qrcode {
@@ -74,6 +119,18 @@
       margin-left: 39px;
     }
 
+    .container img {
+      height: 80rem;
+      width: 80rem;
+    }
 
+    .car .error {
+      font-size: 3rem;
+      position: absolute;
+      text-align: center;
+      color: #e1493b;
+      top: 30%;
+      left: 22%;
+    }
     /* Print page */
   @page { size: landscape; }
